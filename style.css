@@ -1,0 +1,373 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Define color variables for consistent theming across the app */
+    /* Defining brand colors */
+    --brand-blue: #00bfff;
+    --brand-purple: #9370db;
+    --brand-green: #98fb98;
+    /* UI colors */
+    --light-purple: #c8bfe7;
+    --soft-green: #a3d9b1;
+    --light-blue: #3e8ede;
+    --soft-red: #e57373;
+    --soft-blue: #90caf9;
+
+    --dark-grey: #4a4a4a;
+    --light-grey: #666666; 
+
+    --bg-main: #fdf9f0;
+    --bg-card: #dff2f1;
+    --bg-card-light: #fafdfd;
+    --header-bg: #011a3a;
+    --text-main: #011a3a;
+
+    --border-soft: #b0c4de50;
+}
+
+body { font-family: sans-serif; margin: 0; background: var(--bg-main); color: var(--text-main); }
+
+.app-layout {
+    display: grid;
+    /* This defines the three-pane window design */
+    grid-template-columns: 185px 1.2fr 2fr;
+    /* The sidebar is fixed, the center takes remaining space, and the
+    third pane is double the width of the center */
+    height: calc(100vh - 60px); /* Fills the screen height minus the header */
+    overflow: hidden; /* Prevents scrollbars */
+    column-gap: 2px; /* Adds a small gap between columns for visible dividers
+                        while also allowing individual columns to scroll */
+}
+
+.app-container { display: flex; height: 100vh; }
+
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 20px;
+    background-color: var(--light-purple);
+    color: var(--text-main);
+    height: 40px;
+    border-radius: 4px;
+}
+
+.header-left, .header-right { display: flex; align-items: center; gap: 15px; }
+
+.logo {
+    height: 30px;
+    width: auto;
+    margin-bottom: 2px;
+    margin-left: -3px;
+    border: none;
+    border-radius: 4px;
+}
+
+.settings-btn {
+    color: var(--dark-grey);
+}
+
+.login-btn {
+    color: var(--brand-blue);
+}
+
+.settings-btn, .login-btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #011a3a;
+}
+
+.profile-container, .task-container, .detail-container {
+    border: var(--border-soft) solid 2px;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the border and rounded corners are clean */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.profile-container, .detail-container {
+    background-color: var(--bg-card);
+}
+
+.task-container {
+    background-color: var(--bg-card-light);
+}
+
+/* Base styles for each column */
+.sidebar, .task-list, .task-detail {
+    overflow-y: auto; /* individual columns scrollable */
+    padding: 20px; 
+}
+
+.sidebar { 
+    padding: 20px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-list { 
+    padding: 20px; 
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.task-detail { 
+    padding: 20px; 
+}
+
+.active-tasks, .profile-items, .detail-block {
+    font-size: 0.9rem;
+    font-weight: bold;
+
+}
+
+#profileList, #tasks-master {
+    list-style-type: none; 
+    padding: 0; 
+    margin-top: 10px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.tasks-master, .profileList { 
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; 
+    padding: 15px; 
+    margin: 0; 
+    width: 100%; 
+}
+
+.pane-title { 
+    margin: 0;
+    margin-bottom: 20px; 
+    background-color: var(--text-main);
+    color: var(--bg-card); 
+    padding: 5px 10px; 
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.profile-items, .active-tasks {
+    background: var(--bg-card);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-bottom: 10px;
+    min-height: 45px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    box-sizing: border-box;
+} 
+
+.timer-badge { 
+    background: var(--soft-red); 
+    color: var(--text-main); 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+}
+
+.start-btn { 
+    background: var(--soft-green); 
+    color: var(--text-main); 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+}
+
+.continue-btn { 
+    background: var(--soft-blue); 
+    color: var(--text-main); 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+}
+
+.add-new-btn { 
+    background: var(--soft-green); 
+    color: var(--text-main); 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    margin: 10px; 
+    position: relative;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.success-message {
+    display: none; /* Hidden by default */
+    color: var(--brand-green);
+    background-color: var(--header-bg);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.description-text {
+    background-color: var(--bg-card-light);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 4px;
+    border: var(--border-soft) solid 1px;
+    color: var(--dark-grey);
+    font-size: 0.9rem;
+}
+
+.detail-block {
+    background-color: var(--bg-card);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 4px;
+    color: var(--dark-grey);
+    font-size: 0.9rem;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 100; /* Ensures it is above the main content */
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: #c8bfe795; /* Semi-transparent background */
+    justify-content: center; /* Center the modal content */
+}
+
+.modal-content {
+    background-color: var(--bg-main); 
+    padding: 40px; 
+    border-radius: 8px; 
+    width: 70%;
+    height: auto;
+    margin: 15% auto;
+}
+
+.form-container {
+    background-color: var(--bg-card-light);
+    border: var(--border-soft) solid 2px;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the border and rounded corners are clean */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    min-height: 45px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-field input {
+    background: var(--bg-card);
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-main);
+    padding-right: 15px; /* Space for the required star */
+    box-sizing: border-box;
+}
+
+.required-star {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: red;
+    margin-left: 5px;
+    font-weight: bold;
+    flex-shrink: 0; /* Prevents the star from shrinking when space is tight */
+}
+
+.required-note {
+    display: block;
+    width: 100%;
+    font-size: 0.8rem;
+    margin: 15px 0;
+    padding-right: 40px;
+    color: #4a4a4a;
+    text-align: right;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.input-group .required-star {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.input-group input {
+    padding-left: 25px; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.save-Btn, .cancel-Btn {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.save-Btn {
+    background: var(--soft-green); 
+    color: var(--text-main); 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    font-weight: bold;
+}
+
+.cancel-Btn {
+    background: var(--soft-red); 
+    color: var(--text-main); 
+    padding: 10px 20px; 
+    margin-bottom: 20px;
+    border-radius: 4px; 
+    font-weight: bold;
+}
+
+input { 
+    width: 90%; 
+    margin-bottom: 10px; 
+    padding: 8px; 
+    background: #e0f7fa; 
+    color: #4a4a4a; 
+    border: 1px solid var(--border-soft);
+    border-radius: 4px; 
+}
+
+button { 
+    cursor: pointer; 
+    padding: 10px; 
+    border-radius: 4px; 
+    font-weight: bold;
+    border: none;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="David Bookbinder">
+    <link rel="stylesheet" href="style.css">
+    <title>DevDash Prototype</title>
+</head>
+
+<header class="main-header">
+    <div class="header-left">
+        <img class="logo" src="assets/DevDashLogoZoom.png" alt="DevDash Logo">
+    </div>
+    <div class="header-right">
+        <span class="user-name">Username</span>
+        <button class="login-btn">Log In</button>
+        <button class="settings-btn">Settings</button>
+        
+        
+    </div>
+</header>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="profile-container">
+                <h3 class="pane-title">Client Profiles</h3>
+                <ul class="profileList" id="profileList">
+                    <li class="profile-items">Client Profile</li> 
+                    <li class="profile-items" id="selected-profile">Placeholder</li>
+                    <li class="profile-items">.</li>
+                    <li class="profile-items">.</li>
+                    <li class="profile-items">.</li>
+                </ul>
+                <button class="add-new-btn">+ Add New Profile</button>
+            </div>
+        </aside>
+        
+
+        <section class="task-list">
+            <div class="task-container">
+                <h3 class="pane-title">Client Profile Tasks</h3>
+                <ul class="tasks-master">
+                    <li class="active-tasks" display: flex;>
+                        <span>Task</span> 
+                        <button class="start-btn">Start</button> </li>
+                    <li class="active-tasks" id="selected-task" display: flex;>
+                        <span>Placeholder</span> 
+                        <button class="timer-badge">3:04</button>
+                    </li>
+                    <li class="active-tasks" display: flex;>
+                        <span>.</span> 
+                        <button class="continue-btn">Continue</button>
+                    </li>
+                    <li class="active-tasks" display: flex;>
+                        <span>.</span> 
+                        <button class="continue-btn">Continue</button>
+                    </li>
+                    <li class="active-tasks" display: flex;>
+                        <span>.</span> 
+                        <button class="start-btn">Start</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="task-detail">
+            <div class="detail-container">
+                <h3 class="pane-title">Task Description</h3>
+                <div class="detail-block">Date Entered: 2023-10-27</div>
+                <div class="detail-block">Date Due: 2023-11-05</div>
+                <div class="detail-block">Time Spent: 3h 04m</div>
+                <p class="description-text">
+                    This is placeholder text for a task description...
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="form-container">
+                <h3 class="pane-title">New Client Profile</h3>
+                <div class="success-message" id="successMessage">Profile Created Successfully!</div>
+                <div class="input-field" id="required-field">
+                    <input type="text" id="companyInput" required placeholder="Company Name">
+                    <span class="required-star">*</span>
+                </div>
+
+                <div class="input-field" id="required-field">
+                    <input type="text" id="contactInput" required placeholder="Contact Person">
+                    <span class="required-star">*</span>
+                </div>
+
+                <div class="input-field">
+                    <input type="tel" id="phoneInput" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number (123-456-7890) *Must include dashes*">
+                </div>
+
+                <div class="input-field" id="required-field">
+                    <input type="email" id="emailInput" required placeholder="email@example.com">
+                    <span class="required-star">*</span>
+                </div>
+
+                <div class="input-field" id="required-field">
+                    <input type="number" id="rateInput" required placeholder="Hourly Rate (Numbers Only, Decimals Allowed)" min="0" step="0.01">
+                    <span class="required-star">*</span>
+                </div>
+
+                <p class="required-note"> Required Fields<span class="required-star">*</span></p>
+                
+                <button id="save-Btn" class="save-Btn">Save</button>
+                <button id="cancel-Btn" class="cancel-Btn">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
