@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="author" content="David Bookbinder">
     <link rel="stylesheet" href="style.css">
-    <title>DevDash Prototype</title>
+    <title>DevDash</title>
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+    
 </head>
 
 <header class="main-header">
@@ -61,15 +67,16 @@
                         <button class="start-btn">Start</button>
                     </li>
                 </ul>
+                <button class="add-new-btn">+ Add New Task</button>
             </div>
         </section>
 
         <section class="task-detail">
             <div class="detail-container">
                 <h3 class="pane-title">Task Description</h3>
-                <div class="detail-block">Date Entered: 2023-10-27</div>
-                <div class="detail-block">Date Due: 2023-11-05</div>
-                <div class="detail-block">Time Spent: 3h 04m</div>
+                <div class="detail-block">Date Entered: <span class="description-details">2023-10-27</span></div>
+                <div class="detail-block">Date Due: <span class="description-details">2023-11-05</span></div>
+                <div class="detail-block">Time Spent: <span class="description-details">3h 04m</span></div>
                 <p class="description-text">
                     This is placeholder text for a task description...
                 </p>
@@ -106,8 +113,10 @@
                     <span class="required-star">*</span>
                 </div>
 
-                <p class="required-note"> Required Fields<span class="required-star">*</span></p>
-                
+                <div class="legend-container">
+                    <p class="required-note"> Required Fields<span class="required-star">*</span></p>
+                </div>
+
                 <button id="save-Btn" class="save-Btn">Save</button>
                 <button id="cancel-Btn" class="cancel-Btn">Cancel</button>
             </div>
